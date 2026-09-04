@@ -113,8 +113,12 @@ fun LoginScreen(auth: FirebaseAuth, onSignUp: () -> Unit = {}) {
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 trailingIcon = {
-                    val image = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
-                    val description = if (passwordVisible) stringResource(R.string.login_password_ocultar) else stringResource(R.string.login_password_mostrar)
+                    val image =
+                        if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
+                    val description =
+                        if (passwordVisible) stringResource(R.string.login_password_ocultar) else stringResource(
+                            R.string.login_password_mostrar
+                        )
 
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(
@@ -125,6 +129,7 @@ fun LoginScreen(auth: FirebaseAuth, onSignUp: () -> Unit = {}) {
                     }
                 }
             )
+        }
             Spacer(modifier = Modifier.height(48.dp))
             //Botón verde tipo Spotify
             Button(
@@ -172,8 +177,5 @@ fun LoginScreen(auth: FirebaseAuth, onSignUp: () -> Unit = {}) {
                 modifier = Modifier.padding(bottom = 32.dp),
                 style = TextStyle(color = Color.White, fontSize = 14.sp)
             )
-
-        }
-
     }
 }
