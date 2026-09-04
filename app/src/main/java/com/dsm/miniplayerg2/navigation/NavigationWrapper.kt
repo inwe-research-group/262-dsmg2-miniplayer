@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.dsm.miniplayerg2.ui.screens.initial.InitialScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -13,10 +14,10 @@ fun NavigationWrapper(
 ) {
     NavHost(navController = navHostController, startDestination = "initial") {
         composable("initial") {
-            /*InitialScreen(
-                navigateToLogin={navHostController.navigate("logIn")},
-                navigateToSignUp={navHostController.navigate("signUp")}
-            )*/
+            InitialScreen(
+                onLogin={navHostController.navigate("logIn")},
+                onSignUp={navHostController.navigate("signUp")}
+            )
         }
         composable("logIn") {
             /*LoginScreen(
