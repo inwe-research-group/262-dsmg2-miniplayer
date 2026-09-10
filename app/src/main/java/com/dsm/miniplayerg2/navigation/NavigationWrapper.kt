@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.dsm.miniplayerg2.ui.screens.home.HomeScreen
 import com.dsm.miniplayerg2.ui.screens.initial.InitialScreen
 import com.dsm.miniplayerg2.ui.screens.login.LoginScreen
 import com.dsm.miniplayerg2.ui.screens.signup.SignUpScreen
@@ -24,7 +25,8 @@ fun NavigationWrapper(
         composable("logIn") {
             LoginScreen(
                 auth,
-                onSignUp={navHostController.navigate("signUp")}
+                onSignUp={navHostController.navigate("signUp")},
+                onHome={navHostController.navigate("home")}
             )
         }
         composable("signUp") {
@@ -32,7 +34,7 @@ fun NavigationWrapper(
                 onLogin={navHostController.navigate("logIn")})
         }
         composable("home") {
-            // HomeScreen()
+            HomeScreen()
         }
     }
 }
