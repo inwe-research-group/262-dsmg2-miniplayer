@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.dsm.miniplayerg2.ui.screens.initial.InitialScreen
 import com.dsm.miniplayerg2.ui.screens.login.LoginScreen
+import com.dsm.miniplayerg2.ui.screens.signup.SignUpScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -27,7 +28,7 @@ fun NavigationWrapper(
             )
         }
         composable("signUp") {
-            // SignUpScreen()
+            SignUpScreen(auth)
         }
         composable("home") {
             // HomeScreen()
