@@ -43,7 +43,7 @@ import com.dsm.miniplayerg2.ui.theme.White
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun SignUpScreen(auth: FirebaseAuth){
+fun SignUpScreen(auth: FirebaseAuth, onLogin: () -> Unit = {}){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -130,6 +130,7 @@ fun SignUpScreen(auth: FirebaseAuth){
                     if (task.isSuccessful) {
                         val user = task.result?.user
                         Log.d("AUTH", "Usuario creado: ${user?.email}")
+                        onLogin()
                     } else {
                         Log.e("AUTH", "Error: ${task.exception?.message}")
                     }
