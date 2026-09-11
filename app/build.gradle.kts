@@ -53,6 +53,9 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     //Coil
     implementation(libs.coil)
+    //Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
     // Firebase (BOM controla versiones)
     implementation(platform(libs.firebase.bom))
