@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import kotlin.toString
 
 class HomeViewModel:  ViewModel(){
     private var db: FirebaseFirestore= Firebase.firestore
@@ -20,7 +21,19 @@ class HomeViewModel:  ViewModel(){
     val artist : StateFlow<List<Artist>> = _artist
 
     init {
+        //repeat(5){loadData()} // con fines de realizar data semilla o data simulada
         getArtists()
+    }
+    //ejemplo para carga de data semilla
+    private fun loadData(){
+        val random=(1..100).random()
+        val artist= Artist(
+            name= "Artista $random",
+            description="Excelente Artista $random",
+            image="https://www.banderasnews.com/0705/images/shakiramex.jpg"
+        )
+        db.collection("artists").add(artist)
+        Log.i("loadData", artist.toString())
     }
 
     private fun getArtists(){
