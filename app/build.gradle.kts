@@ -51,6 +51,8 @@ dependencies {
     // Iconos especiales de material3
     implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.compose.material:material-icons-extended")
+    //Coil
+    implementation(libs.coil)
 
     // Firebase (BOM controla versiones)
     implementation(platform(libs.firebase.bom))
