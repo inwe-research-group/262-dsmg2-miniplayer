@@ -56,6 +56,9 @@ dependencies {
     //Koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+    //inicio sesion con google
+    implementation(libs.converter.gson)
+    implementation(libs.play.services.auth)
 
     // Firebase (BOM controla versiones)
     implementation(platform(libs.firebase.bom))
