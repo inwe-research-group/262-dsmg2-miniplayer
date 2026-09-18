@@ -1,5 +1,6 @@
 package com.dsm.miniplayerg2.firebase
 
+import android.util.Log
 import com.dsm.firebaseauth.data.model.Usuario
 import com.dsm.firebaseauth.data.model.UsuarioSesion
 import com.google.firebase.auth.FirebaseAuth
@@ -45,6 +46,30 @@ object AuthManager {
 
     fun getAuthInstance(): FirebaseAuth {
         return auth
+    }
+
+    fun login(email: String, password: String, callback: (Boolean, String) -> Unit) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("AUTH", "Login correcto: ${task.result}")
+                    val user = auth.currentUser
+                    val current = UsuarioSesion.usuario.value
+                    if (current != null) {
+                        UsuarioSesion.usuario.value = current.copy(email = user?.email ?: email)
+                    } else {
+                        UsuarioSesion.usuario.value = Usuario(email = user?.email ?: email)
+                    }
+                    if (user != null && user.isEmailVerified) {
+                        callback(true, "Inicio de sesión exitoso.")
+                    } else {
+                        auth.signOut()
+                        callback(false, "Verifica tu correo antes de iniciar sesión.")
+                    }
+                } else {
+                    callback(false, task.exception?.message ?: "Error al iniciar sesión.")
+                }
+            }
     }
 
 

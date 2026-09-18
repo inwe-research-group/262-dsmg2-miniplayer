@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.dsm.miniplayerg2.ui.screens.home.HomeScreen
 import com.dsm.miniplayerg2.ui.screens.initial.InitialScreen
 import com.dsm.miniplayerg2.ui.screens.login.LoginScreen
+import com.dsm.miniplayerg2.ui.screens.login.LoginViewModel
 import com.dsm.miniplayerg2.ui.screens.signup.SignUpScreen
 import com.dsm.miniplayerg2.ui.screens.signup.SignUpViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +19,7 @@ fun NavigationWrapper(
     auth: FirebaseAuth
 ) {
     val signUpViewModel: SignUpViewModel = koinViewModel()
+    val loginViewModel: LoginViewModel = koinViewModel()
 
     NavHost(navController = navHostController, startDestination = "initial") {
         composable("initial") {
@@ -28,7 +30,7 @@ fun NavigationWrapper(
         }
         composable("logIn") {
             LoginScreen(
-                auth,
+                loginViewModel,
                 onSignUp={navHostController.navigate("signUp")},
                 onHome={navHostController.navigate("home")}
             )
