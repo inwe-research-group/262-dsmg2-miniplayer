@@ -43,5 +43,9 @@ object AuthManager {
             }
     }
 
+    fun getAuthInstance(): FirebaseAuth {
+        return auth
+    }
+
 
 }
