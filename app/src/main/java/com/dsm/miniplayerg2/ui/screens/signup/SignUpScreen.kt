@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -48,6 +49,7 @@ import com.dsm.miniplayerg2.ui.theme.White
 fun SignUpScreen(viewModel: SignUpViewModel,
                  onLogin: () -> Unit = {})
 {
+    LaunchedEffect(Unit) {viewModel.resetForm()}
     val signUpState by viewModel.signUpState.collectAsState()
 
     // FocusRequester para navegación de enfoque entre campos

@@ -103,6 +103,7 @@ class SignUpViewModel: ViewModel() {
         _signUpState.update { it.copy(passwordVisible = !it.passwordVisible) }
     }
 
-
-
+    fun resetForm() {
+        _signUpState.value = SignUpState()
+    }
 }
